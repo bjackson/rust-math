@@ -1,0 +1,19 @@
+#[link(name = "math", vers = "0.01", author = "Brett Jackson")];
+#[crate_type = "lib"];
+
+
+pub fn sin(angle: float) -> float 
+{
+    return angle - pow(angle,3)/6.0 + pow(angle,5)/120.0 - pow(angle,7)/5040.0 + pow(angle,9)/362880.0 - pow(angle,11)/39916800.0 + pow(angle,13)/6227020800.0 - pow(angle,15)/1307674368000.0;
+}
+
+pub fn pow(mantissa: float, exponent: int) -> float 
+{
+    let mut result = 1.0f;
+    let mut count = 0;
+    while count < exponent { 
+        result = mantissa * result;
+        count +=1;
+    }
+    return result;
+}
