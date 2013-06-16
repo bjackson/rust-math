@@ -2,7 +2,8 @@
 #[crate_type = "lib"];
 
 enum SpecialMathValue {
-    NaN
+    NaN,
+    Overflow
 }
 
 pub fn sin(angle: float) -> float 
