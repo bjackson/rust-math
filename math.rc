@@ -1,6 +1,9 @@
 #[link(name = "math", vers = "0.01", author = "Brett Jackson")];
 #[crate_type = "lib"];
 
+enum SpecialMathValue {
+    NaN
+}
 
 pub fn sin(angle: float) -> float 
 {
@@ -21,16 +24,15 @@ pub fn pow(mantissa: float, exponent: int) -> float
 pub fn factorial(number: int) -> int {
     let mut count = 1;
     let mut result = 1; 
-    match number {
-        1 => result = 1,
-        0 => result = 1,
-        ..0 => NaN,
+    result = match number {
+        0 | 1 => 1,
+        number if number < 0 => fail!("Negative integer in factorial prohibited."),
         _ => {
             while count < number {
                 count += 1;
                 result = result * count;
-            }
+            } result
         }
-    }
+    };
     return result;
 }
