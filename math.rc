@@ -1,10 +1,6 @@
 #[link(name = "math", vers = "0.01", author = "Brett Jackson")];
 #[crate_type = "lib"];
 
-enum SpecialMathValue {
-    NaN,
-    Overflow
-}
 
 pub fn sin(angle: float) -> float 
 {
@@ -37,3 +33,17 @@ pub fn factorial(number: int) -> int {
     };
     return result;
 }
+
+pub fn sqrt(number: float) {
+    //caution, may not work for 64-bit integers
+    let initial_guess: float = (1 << 29) + ((number as f32) >> 1) - (1 << 22);
+    let mut approx = initial_guess;
+    for 4.times {
+        approx = 0.5*(number/approx + approx);
+    }
+    return approx;
+}
+
+// pub fn newtons_method(number: float, guess: float, iterations: int) {
+    
+// }

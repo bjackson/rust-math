@@ -1,5 +1,5 @@
 all: 
-		rustc --lib math.rc
+		rustc --lib math.rc -L .
 		rustc tests.rs -L .
 
 clean: 
